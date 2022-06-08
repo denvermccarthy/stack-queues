@@ -14,9 +14,18 @@ class Stack {
   pop() {
     return this.#list.pop();
   }
-  view() {
+  get view() {
     return this.#list.toString();
   }
+}
+
+function reverseArr(array) {
+  const stack = new Stack([...array]);
+  reversedArray = [];
+  while (stack.view) {
+    reversedArray.push(stack.pop());
+  }
+  return reversedArray;
 }
 
 class Queue {
@@ -36,19 +45,4 @@ class Queue {
 
 }
 
-const stack = new Stack([1, 2, 3]);
-stack.push(1);
-console.log(stack.peek());
-const popped = stack.pop();
-console.log("popped", popped);
-console.log("stack.view()", stack.view());
-
-const queue = new Queue([1, 2, 3]);
-console.log(queue.hasNext());
-queue.dequeue();
-queue.dequeue();
-console.log(queue.hasNext());
-queue.enqueue(1);
-console.log(queue.hasNext());
-
-module.exports = { Stack, Queue };
+module.exports = { Stack, Queue, reverseArr };
